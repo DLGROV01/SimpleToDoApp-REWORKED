@@ -69,7 +69,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder>{
 
         //update the view inside the view holder with this data
         public void bind(String item) {
-            tvItem.setTextAlignment(Integer.parseInt(item));
+            tvItem.setText(item);
             tvItem.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
