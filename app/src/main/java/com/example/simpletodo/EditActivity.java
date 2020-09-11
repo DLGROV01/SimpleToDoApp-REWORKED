@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.Objects;
+
+
 public class EditActivity extends AppCompatActivity {
 
     EditText etItem;
@@ -22,9 +25,10 @@ public class EditActivity extends AppCompatActivity {
         etItem = findViewById(R.id.etItem);
         btnSave = findViewById(R.id.btnSave);
 
-        getSupportActionBar().setTitle("Edit item");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Edit item");
 
         etItem.setText(getIntent().getStringExtra(MainActivity.KEY_ITEM_TEXT));
+
         // When the user is done editing, they click the save button
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,7 +38,7 @@ public class EditActivity extends AppCompatActivity {
 
                 // Pass the data (results of editing)
                 intent.putExtra(MainActivity.KEY_ITEM_TEXT, etItem.getText().toString());
-                intent.putExtra(MainActivity.KEY_ITEM_POSITION, getIntent().getExtras().getInt(MainActivity.KEY_ITEM_POSITION));
+                intent.putExtra(MainActivity.KEY_ITEM_POSITION, Objects.requireNonNull(getIntent().getExtras()).getInt(MainActivity.KEY_ITEM_POSITION));
 
                 //set the result of intent
                 setResult(RESULT_OK, intent);
